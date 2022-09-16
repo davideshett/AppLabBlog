@@ -16,5 +16,6 @@ namespace api.Data
         }
 
         public DbSet<BlogPost> BlogPosts { get; set; } 
+        public DbSet<Author> Authors { get; set; }
     }
 }

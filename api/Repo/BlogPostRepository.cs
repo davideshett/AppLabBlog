@@ -27,6 +27,7 @@ namespace api.Repo
         {
             var data = new BlogPost
             {
+                AuthorId = field.AuthorId,
                 Title = field.Title,
                 Body = field.Body
             };

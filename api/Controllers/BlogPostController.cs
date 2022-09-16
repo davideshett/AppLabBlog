@@ -43,26 +43,26 @@ namespace api.Controllers
             });
         }
 
-        [HttpGet]
-        public async Task<IActionResult> getBlogPosts()
-        {
-            var dataFromRepo = await blogPostRepositor.GetBlogPosts();
-             if(dataFromRepo == null)
+            [HttpGet]
+            public async Task<IActionResult> getBlogPosts()
             {
-                return BadRequest(new {
-                    Message = "Error",
-                    StatusCode = 401,
-                    IsSuccessful = false
+                var dataFromRepo = await blogPostRepositor.GetBlogPosts();
+                if(dataFromRepo == null)
+                {
+                    return BadRequest(new {
+                        Message = "Error",
+                        StatusCode = 401,
+                        IsSuccessful = false
+                    });
+                }
+
+                return Ok(new {
+                    Message = "Success",
+                    StatusCode = 201,
+                    IsSuccessful = true,
+                    Data = mapper.Map<ICollection<BlogPostForCreation>>(dataFromRepo)
                 });
             }
-
-            return Ok(new {
-                Message = "Success",
-                StatusCode = 201,
-                IsSuccessful = true,
-                Data = dataFromRepo
-            });
-        }
 
 
 
